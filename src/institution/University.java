@@ -47,6 +47,17 @@ public class University {
         return null;
     }
 
+    public int getAverageKnowledgeLevel() {
+        int totalLevel = 0;
+        for (Student student : students) {
+            totalLevel += student.getKnowledge().getLevel();
+        }
+        int averageLevel = totalLevel / students.size();
+		return averageLevel;
+        
+    }
+
+
     /**
      * @param student the wanted student
      * @return the knowledge of a certain student

@@ -32,7 +32,7 @@ public class Application {
         university.rateStudent(abiturientsList.get(3), new Knowledge(2));
 
         // need to specify the internship's name and the floor knowledge level
-        Internship internship = new Internship("Interlink", 3);
+        Internship internship = new Internship("Interlink", university.getAverageKnowledgeLevel());
         
         // try to set all the students
         for (Student student : students) {
