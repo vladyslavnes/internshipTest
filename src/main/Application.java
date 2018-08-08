@@ -4,48 +4,33 @@ import java.util.ArrayList;
 
 import institution.University;
 import institution.interlink.Internship;
+import javafx.event.Event;
 import person.Student;
 import person.consciousness.Knowledge;
+import person.development.event.Event;
+import person.development.strategy.Strategy;
 
 public class Application {
     public static void main(String[] args) {
-        University university = new University("CH.U.I.");
-
-       // can be substituted with an API call
+        // can be substituted with an API call
         ArrayList<Student> abiturientsList = new ArrayList<Student>();
-        abiturientsList.add(new Student("Vladyslav Nesterenko"));
-        abiturientsList.add(new Student("Andrew Kostenko"));
-        abiturientsList.add(new Student("Julia Velkina"));
-        abiturientsList.add(new Student("Maria Perechrest"));
-        
-        // System.out.print(abiturientsList.length);
-        university.addStudents(abiturientsList);
+        abiturientsList.add(new Student("Vladyslav Nesterenko", 1.0));
+        abiturientsList.add(new Student("Andrew Kostenko", 0.5));
+        abiturientsList.add(new Student("Julia Velkina", 0.25));
+        abiturientsList.add(new Student("Maria Perechrest", 0.125));
 
-        ArrayList<Student> students = university.getStudents();
+        ArrayList<Event> events = new ArrayList<>();
         
-        // here goes some logic for rating students
-        for (Student student : students) {
-            university.rateStudent(student, new Knowledge(5));
-        }
+        events.add(new Event("go to university", new Knowledge(150.0), new Knowledge(10.0), 210));
+        events.add(new Event("ask mentor", new Knowledge(2.5), new Knowledge(2.5), 1));
+        events.add(new Event("read a tech book", new Knowledge(45.0), new Knowledge(1.0), 7));
+        events.add(new Event("take an online tutorial", new Knowledge(10.0), new Knowledge(15.0), 5));
+        
+        Strategy optStrategy = new Strategy(events);
 
-        // set a rate lower than the floor level
-        university.rateStudent(abiturientsList.get(3), new Knowledge(2));
+        Student tStudent = abiturientsList.get(3);
+        optStrategy.applyToStudent(tStudent);
 
-        // need to specify the internship's name and the floor knowledge level
-        Internship internship = new Internship("Interlink", university.getAverageKnowledgeLevel());
-        
-        // try to set all the students
-        for (Student student : students) {
-            internship.setStudent(student);
-        }
-        
-        System.out.println("List of internship's students:");
-        for (Student student : students) {
-            // Voila! The student without the needed doesn't get to the internship
-            if (internship.isIntern(student)) {
-                System.out.println(student.getName());
-            }
-        }
-        
+        Sytem.out.println(tStudent.getKnowledge().getLevel());
     }
 }

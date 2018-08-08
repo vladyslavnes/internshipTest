@@ -2,15 +2,13 @@ package institution;
 
 import java.util.ArrayList;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 import person.Student;
 import person.consciousness.Knowledge;
 
 public class University {
     private String name;
     private ArrayList<Student> students = new ArrayList<Student>();
-    
+
     public University(String name) {
         this.name = name;
     }
@@ -20,17 +18,17 @@ public class University {
     }
 
     public void addStudents(ArrayList<Student> newStudents) {
-		students.addAll(newStudents);
+        students.addAll(newStudents);
     }
 
     /**
      * @param studentName the student name to rate
-     * @param knowledge the knowledge to set
+     * @param knowledge   the knowledge to set
      */
     public void rateStudent(Student person, Knowledge knowledge) {
         // if the person is a student
         if (isStudent(person) != null) {
-            //  set knowledge
+            // set knowledge
             person.setKnowledge(knowledge);
         } else { // don't
             System.out.print("This person is not in the university");
@@ -53,10 +51,9 @@ public class University {
             totalLevel += student.getKnowledge().getLevel();
         }
         int averageLevel = totalLevel / students.size();
-		return averageLevel;
-        
-    }
+        return averageLevel;
 
+    }
 
     /**
      * @param student the wanted student

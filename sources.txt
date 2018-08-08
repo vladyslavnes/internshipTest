@@ -1,0 +1,7 @@
+D:\VLAD\projects\InternshipTest\src\institution\University.java
+D:\VLAD\projects\InternshipTest\src\institution\interlink\Internship.java
+D:\VLAD\projects\InternshipTest\src\main\Application.java
+D:\VLAD\projects\InternshipTest\src\person\Student.java
+D:\VLAD\projects\InternshipTest\src\person\consciousness\Knowledge.java
+D:\VLAD\projects\InternshipTest\src\person\development\event\Event.java
+D:\VLAD\projects\InternshipTest\src\person\development\strategy\Strategy.java
